@@ -15,6 +15,7 @@ pydantic_core==2.46.5
 PyQt6==6.11.0
 PyQt6-Qt6==6.11.2
 PyQt6_sip==13.12.0
+qasync==0.28.0
 starlette==1.6.0
 typing-inspection==0.4.4
 typing_extensions==4.16.0
