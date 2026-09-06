@@ -46,9 +46,13 @@ class AgentService:
             {
                 "role" : "assistant",
                 "content" : content
-
             }
         )
+
+        if len(self._history) > 11:
+            system_prompt_item = self._history[0]
+            recent_history = self._history[-10:]
+            self._history = [system_prompt_item] + recent_history
 
         return content
 
