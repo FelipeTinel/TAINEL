@@ -1,9 +1,10 @@
 import asyncio
 import random
-from config.prompts import UNNECESSARY_COMMENT
-from typing import Callable, Awaitable
-from agent_service import AgentService
 
+from config.prompts import UNNECESSARY_COMMENT
+from services.agent_service import AgentService
+
+from typing import Callable, Awaitable
 class EventManager:
     def __init__(
         self, 
