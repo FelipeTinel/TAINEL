@@ -2,7 +2,7 @@ import sys
 import asyncio
 from PyQt6.QtWidgets import QApplication, QWidget, QLabel, QVBoxLayout
 from PyQt6.QtCore import Qt, QTimer
-from PyQt6.QtGui import QFont, QColor
+from PyQt6.QtGui import QFont, QColor, QPixmap
 import qasync
 
 class MascotWidget(QWidget):
@@ -38,8 +38,15 @@ class MascotWidget(QWidget):
             }
         """)
 
-        self.avatar_label = QLabel("🤖")
-        self.avatar_label.setFont(QFont("Arial", 48))
+        pixmap = QPixmap("assets/TAINEL.jpeg")
+        pixmap = pixmap.scaled(
+            150, 150, 
+            Qt.AspectRatioMode.KeepAspectRatio, 
+            Qt.TransformationMode.SmoothTransformation
+        )
+
+        self.avatar_label = QLabel()
+        self.avatar_label.setPixmap(pixmap)
         self.avatar_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
         layout.addWidget(self.speech_bubble)
@@ -53,7 +60,6 @@ class MascotWidget(QWidget):
         self.move(screen.width() - 260, screen.height() - 200)
 
     def set_speech(self, text: str):
-        """Atualiza a fala no balão de texto."""
         self.speech_bubble.setText(text)
         self.adjustSize()
 

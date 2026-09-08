@@ -20,7 +20,7 @@ async def main():
         system_prompt=SYSTEM_PROMPT
     )
 
-    widget = MascotWidget(agent=agent)
+    widget = MascotWidget()
     widget.show()
 
     async def handle_spontaneous_comment(text: str):
