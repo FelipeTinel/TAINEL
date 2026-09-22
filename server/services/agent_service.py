@@ -1,11 +1,12 @@
 import re
 from ollama import AsyncClient
+from collections import deque
 
 class AgentService:
 
     def __init__(self, model: str = "llama3.2:1b", system_prompt: str | None = None):
         self._client = AsyncClient()
-        self._history: list[dict[str, str]] = []
+        self._history: deque[dict[str, str]]
         self._system_prompt = system_prompt
         self.model = model
         self._init_history()
