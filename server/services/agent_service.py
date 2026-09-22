@@ -4,9 +4,9 @@ from collections import deque
 
 class AgentService:
 
-    def __init__(self, model: str = "llama3.2:1b", system_prompt: str | None = None):
+    def __init__(self, model: str = "llama3.2:1b", system_prompt: str | None = None) -> None:
         self._client = AsyncClient()
-        self._history: deque[dict[str, str]]
+        self._history: deque[dict[str, str]] = deque(maxlen=10)
         self._system_prompt = system_prompt
         self.model = model
         self._init_history()
@@ -49,11 +49,6 @@ class AgentService:
                 "content" : content
             }
         )
-
-        if len(self._history) > 11:
-            system_prompt_item = self._history[0]
-            recent_history = self._history[-10:]
-            self._history = [system_prompt_item] + recent_history
 
         return content
 
